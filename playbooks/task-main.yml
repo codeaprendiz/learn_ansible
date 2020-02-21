@@ -1,0 +1,33 @@
+# To get the hostname of the machine
+---
+- hosts: localhost
+  tasks:
+    - name: get server hostname
+      command: hostname
+
+
+# become is to become root user
+# apt module is for  installing packages
+# with_items introduces looping concept by using the variable {{item}}
+# for installing packages mentioned below
+---
+- hosts: localhost
+  become: true
+  tasks:
+    - name: install web components
+      apt: name={{item}} state=present update_cache=yes
+      with_items:
+        - apache2
+        - libapache2-mod-wsgi
+        - python-pip
+        - python-virtualenv
+
+
+#  To ensure that mysql service is started we can use
+#  module service
+---
+- hosts: localhost
+  become: true
+  tasks:
+    - name: ensure mysql started
+      service: name=mysql state=started enabled=yes

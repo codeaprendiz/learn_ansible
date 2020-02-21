@@ -1,11 +1,1 @@
----
-- hosts: localhost
-  become: true
-  tasks:
-    - name: install web components
-      apt: name={{item}} state=present update_cache=yes
-      with_items:
-        - apache2
-        - libapache2-mod-wsgi
-        - python-pip
-        - python-virtualenv
+
