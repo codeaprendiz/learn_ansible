@@ -98,3 +98,47 @@
         group: wheel
         mode: '0644'
 
+# lineinfile – Manage lines in text files
+# This module ensures a particular line is in a file, or replace an existing line using a back-referenced regular expression.
+# This is primarily useful when you want to change a single line in a file only.
+- hosts: localhost
+  become: true
+  tasks:
+    - name: Ensure SELinux is set to enforcing mode
+      lineinfile:
+        path: /etc/selinux/config
+        regexp: '^SELINUX='
+        line: SELINUX=enforcing
+
+
+#  command – Execute commands on targets
+#  The command module takes the command name followed by a list of space-delimited arguments.
+
+- hosts: localhost
+  become: true
+  tasks:
+    - name: return motd to registered var
+      command: cat /etc/motd
+      register: mymotd
+
+
+#  wait_for – Waits for a condition before continuing
+#  You can wait for a set amount of time timeout, this is the default if nothing is specified or just timeout is specified. This does not produce an error.
+- hosts: localhost
+  become: true
+  tasks:
+    - name: sleep for 300 seconds and continue with play
+      wait_for:
+        timeout: 300
+      delegate_to: localhost
+
+
+
+#  uri – Interacts with webservices
+#  Interacts with HTTP and HTTPS web services and supports Digest, Basic and WSSE HTTP authentication mechanisms.
+- hosts: localhost
+  become: true
+  tasks:
+    - name: Check that you can connect (GET) to a page and it returns a status 200
+      uri:
+        url: http://www.example.com
