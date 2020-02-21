@@ -31,3 +31,70 @@
   tasks:
     - name: ensure mysql started
       service: name=mysql state=started enabled=yes
+
+#  Once apache is started, we enable the module wsgi in apache by using the ansible module apache2_module.
+#  Once this module is enabled, we need to restart apache2 for the changes to take effect. So the next task
+#  should only be triggered when wsgi is enabled. We use notify to achieve this. The notify will tell the
+#  handler to execute the module service which will restart apache2.
+
+---
+- hosts: localhost
+  become: true
+  tasks:
+    - name: ensure apache2 started
+      service: name=apache2 state=started enabled=yes
+    - name: ensure mod_wsgi enabled
+      apache2_module: state=present name=wsgi
+      notify: restart apache2
+  handlers:
+    - name: restart apache2
+      service: name=apache2 state=restarted
+
+
+
+# copy module is used for copying the from scr (from project directory relative path)
+# to dest at the hosts
+---
+- hosts: localhost
+  become: true
+  tasks:
+    - name: copy ansible.cfg file
+      copy: src=ansible.cfg dest=/home/user/ansible.cfg mode=0755
+
+
+# The module pip is used to install python dependencies mentioned in the file requrirements in the hosts group localhost
+
+---
+- hosts: localhost
+  become: true
+  tasks:
+    - name: setup python virtualenv
+      pip: requirements=/var/www/demo/requirements.txt virtualenv=/var/www/demo/.venv
+
+
+
+# following first task would delete the file in path.
+# following second task would create a symlink from src to dest
+---
+- hosts: localhost
+  become: true
+  tasks:
+    - name: de-activate default apache site
+      file: path=/etc/apache2/sites-enabled/000-default.conf state=absent
+
+    - name: activate demo apache site
+      file: src=/etc/apache2/sites-available/demo.conf dest=/etc/apache2/sites-enabled/demo.conf state=link
+
+
+# template – Template a file out to a remote server
+- hosts: localhost
+  become: true
+  tasks:
+    - name: Template a file to /etc/files.conf
+      template:
+        src: /mytemplates/foo.j2
+        dest: /etc/file.conf
+        owner: bin
+        group: wheel
+        mode: '0644'
+
