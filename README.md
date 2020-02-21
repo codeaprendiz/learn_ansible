@@ -10,7 +10,7 @@ ansible 2.9.4
 
 ## list inventory
 Reference Docs
-[a link] https://docs.ansible.com/ansible/latest/user_guide/intro_patterns.html
+https://docs.ansible.com/ansible/latest/user_guide/intro_patterns.html
 
 To convert from *.ini format for *.yml format you can use the following command
 ```bash
@@ -143,8 +143,10 @@ $ ansible --list-host "\!prod"
     127.0.0.1
 ```
 
-
 ## Modules
+
+Reference Docs
+https://docs.ansible.com/ansible/latest/modules/modules_by_category.html
 
 ### ping
 
@@ -160,9 +162,24 @@ $ ansible -m ping localhost
 }
 ```
 
-### command
+### command (the default module)
 ```bash
+$ ansible -m command -a "ls" local
+127.0.0.1 | CHANGED | rc=0 >>
+README.md
+ansible.cfg
+inventory.ini
+inventory.yaml
+inventory.yml
 
+# since it is default
+$ ansible -a "ls" local
+127.0.0.1 | CHANGED | rc=0 >>
+README.md
+ansible.cfg
+inventory.ini
+inventory.yaml
+inventory.yml
 ```
 
 
