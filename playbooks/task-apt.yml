@@ -4,7 +4,7 @@
 - hosts: localhost
   become: true
   tasks:
-    - name: install mysql-server
+    - name: install nginx
       apt: name=mysql-server state=present update_cache=yes
 
 
