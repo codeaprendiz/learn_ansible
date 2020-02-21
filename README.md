@@ -1,7 +1,21 @@
 # ansible-kitchen
 Lets bake some good Infra code here
 
+Version at the time of making this ReadMe.md
+```bash
+$ ansible --version
+ansible 2.9.4
+```
+
+
 ## list inventory
+Reference Docs
+[a link] https://docs.ansible.com/ansible/latest/user_guide/intro_patterns.html
+
+To convert from *.ini format for *.yml format you can use the following command
+```bash
+ansible-inventory -i inventory.ini -y --list > inventory.yaml
+```
 
 Default output without setting ansible.cfg
 ```bash
@@ -17,11 +31,16 @@ using custom file ansible.cfg
 inventory=inventory.yml
 ```
 
+The following is the inventory.yml
 ```yaml
 all:
   hosts:
-    localhost
+    mail.example.com:
   children:
+    local:
+      hosts:
+        127.0.0.1:
+          ansible_connection: local
     webservers:
       hosts:
         foo.example.com:
@@ -53,25 +72,27 @@ all:
 
 ```bash
 $ ansible -i inventory.yml --list-host all
-  hosts (6):
-    localhost
+  hosts (7):
+    mail.example.com
     foo.example.com
     two.example.com
     one.example.com
     bar.example.com
     three.example.com
+    127.0.0.1
 ```
 
 after setting ansible.cfg file
 ```bash
 $ ansible --list-host all
-  hosts (6):
-    localhost
+  hosts (7):
+    mail.example.com
     foo.example.com
     two.example.com
     one.example.com
     bar.example.com
     three.example.com
+    127.0.0.1
 ```
 
 using group names "webservers" is a group
@@ -85,12 +106,63 @@ $ ansible --list-host "webservers"
 using wild cards
 ```bash
 $ ansible --list-host "*.com"
-  hosts (5):
+  hosts (6):
     two.example.com
     one.example.com
     foo.example.com
     bar.example.com
+    mail.example.com
     three.example.com
+```
+
+giving multiple groups
+```bash
+$ ansible --list-host "prod:test"
+  hosts (5):
+    foo.example.com
+    two.example.com
+    one.example.com
+    bar.example.com
+    three.example.com
+```
+
+using as an array
+```bash
+$ ansible --list-host "prod[0]"
+  hosts (1):
+    foo.example.com
+```
+
+using negation
+```bash
+$ ansible --list-host "\!prod"
+  hosts (4):
+    mail.example.com
+    bar.example.com
+    three.example.com
+    127.0.0.1
+```
+
+
+## Modules
+
+### ping
+
+To check the connectivity of all hosts
+```bash
+$ ansible -m ping localhost
+127.0.0.1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+```
+
+### command
+```bash
+
 ```
 
 

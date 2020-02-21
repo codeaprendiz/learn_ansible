@@ -1,7 +1,11 @@
 all:
   hosts:
-    localhost
+    mail.example.com:
   children:
+    local:
+      hosts:
+        127.0.0.1:
+          ansible_connection: local
     webservers:
       hosts:
         foo.example.com:
