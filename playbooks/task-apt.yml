@@ -1,5 +1,5 @@
 ---
-- hosts: webserver
+- hosts: localhost
   become: true
   tasks:
     - name: install web components
