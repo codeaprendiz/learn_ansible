@@ -3,6 +3,6 @@
   hosts: local
   become: true
   roles:
-    - { role: docker,                   tags: [ 'docker'       ] }
+    - { role: docker-ubuntu-1804,                   tags: [ 'docker-ubuntu-1804'       ] }
 
 
