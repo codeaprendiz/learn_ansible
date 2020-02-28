@@ -1,0 +1,8 @@
+---
+- name: dev-k8s-setup
+  hosts: local
+  become: true
+  roles:
+    - { role: docker,                   tags: [ 'docker'       ] }
+
+
