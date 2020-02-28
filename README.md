@@ -7,6 +7,14 @@ $ ansible --version
 ansible 2.9.4
 ```
 
+# Installation 
+
+- Ubuntu 18.04
+```bash
+$ sudo apt-add-repository ppa:ansible/ansible
+$ sudo apt update
+$ sudo apt install ansible
+```
 
 ## list inventory
 Reference Docs
