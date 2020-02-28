@@ -1,5 +1,5 @@
 ---
-- name: dev-k8s-setup
+- name: docker-install
   hosts: local
   become: true
   roles:

@@ -1,0 +1,6 @@
+---
+- name: install common packages
+  hosts: local
+  become: true
+  roles:
+    - { role: commons,                   tags: [ 'commons'       ] }
