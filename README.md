@@ -11,9 +11,9 @@ ansible 2.9.4
 
 - Ubuntu 18.04
 ```bash
-$ sudo apt-add-repository ppa:ansible/ansible
+$ sudo apt-add-repository ppa:ansible/ansible -y
 $ sudo apt update
-$ sudo apt install ansible
+$ sudo apt -y install ansible
 ```
 
 ## list inventory
