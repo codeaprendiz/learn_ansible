@@ -22,7 +22,7 @@
 - name: transfer the systemd scripts
   template:
     src: "{{ item }}"
-    dest: "{{ CONF_FILES_DIR }}/{{ item | basename }}"
+    dest: "{{ SYSTEMD_FILES_DIR }}/{{ item | basename }}"
     mode: 0777
   with_fileglob:
     - ../templates/{{ TEMPLATE_FOLDER_SYSTEM }}/*.*
