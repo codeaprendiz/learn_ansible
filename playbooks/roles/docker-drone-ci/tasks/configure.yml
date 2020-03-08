@@ -18,6 +18,21 @@
     - drone-install
     - drone-cluster
 
+- name: copy drone docker-compose file
+  template:
+    dest: "{{ drone_server_opt_dir }}/docker-compose.yml"
+    owner: "{{ drone_user }}"
+    group: "{{ drone_group }}"
+    mode: 0777
+    src: docker-compose.yml
+  tags:
+    - drone
+    - drone-install
+    - drone-docker-compose
+    - drone-cluster
+    - drone-config
+    - drone-config-main
+
 - name: create drone configuration file
   template:
      dest: "{{ drone_server_config_dir }}/{{ item | basename }}"
@@ -26,7 +41,7 @@
      mode: 0777
      src: "{{ item }}"
   with_items:
-    - drone_server.conf
+    - drone_server.env
   register: config_change
   tags:
     - drone
