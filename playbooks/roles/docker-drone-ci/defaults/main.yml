@@ -7,8 +7,8 @@ CONST_DRONE_SERVER_PROTO: https
 CONST_DRONE_TLS_AUTOCERT: true
   # https://github.com/drone/drone/issues/2779
 CONST_DRONE_USER_CREATE: username:octocat,admin:true
-drone_user: codeaprendiz
-drone_group: codeaprendiz
+drone_user: drone
+drone_group: drone
 
 mount_path: "/data"
 drone_server_opt_dir: "/opt/drone-server"

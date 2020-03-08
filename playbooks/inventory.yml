@@ -8,7 +8,7 @@ all:
           ansible_connection: local
     gcp:
       hosts:
-        droneio.gotdns.ch:
+        droneioci.gotdns.ch:
     webservers:
       hosts:
         foo.example.com:

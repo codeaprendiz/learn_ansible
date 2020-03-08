@@ -1,0 +1,31 @@
+---
+monit_interval: 60
+monit_start_delay: 30 # 0 to disable
+monit_logfile: syslog facility log_daemon
+monit_event_path: /var/lib/monit/events
+
+monit_alerts_on: true
+monit_alert_skip_when: "action, instance, pid, ppid"
+
+monit_mail_host: smtp.gmail.com
+monit_mail_port: 587
+monit_mail_username: you
+monit_mail_password: securepassword
+monit_mail_encryption: TLSV1 # SSLAUTO, SSLV2, SSLV3, TLSV1, TLSV11, TLSV12
+monit_mail_alert_to: me@mydomain.com
+monit_mail_default_from: monit@mydomain.com
+monit_mail_default_subject: "[Monit] $SERVICE $EVENT"
+monit_mail_default_message: "Monit $ACTION $SERVICE at $DATE on $HOST: $DESCRIPTION."
+
+monit_http_host: localhost
+monit_http_port: 2812
+monit_http_allow: ["localhost"]
+
+monit_http_ssl: false
+monit_http_local_pemfile_path: ~/dev/testproject/secrets/monit.pem
+
+monit_process_list: []
+monit_process_group_list: []
+monit_process_host_list: []
+
+apt_cache_valid_time: 86400
