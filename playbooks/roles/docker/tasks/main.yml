@@ -1,0 +1,29 @@
+---
+- name: check whether docker exists
+  shell: command -v docker
+  ignore_errors: True
+  register: result
+  changed_when: "False"
+
+- import_tasks: install.yml
+  #when: result is defined and result | failed
+
+- name: ensure "docker" group present
+  group:
+    name: docker
+    state: present
+    system: yes
+
+- name: add users into "docker"
+  user:
+    append: yes
+    groups: docker
+    state: present
+    name: '{{ item }}'
+  with_items: '{{ docker_users or [] }}'
+
+- name: start docker
+  service:
+    name: docker
+    state: started
+    enabled: yes

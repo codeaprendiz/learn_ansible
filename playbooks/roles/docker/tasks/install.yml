@@ -1,0 +1,35 @@
+---
+
+
+- name: copy docker official install script
+  template:
+    dest: '/tmp/get_docker.sh'
+    src: get_docker.sh
+    force: yes
+    mode: 0755
+
+
+- name: run the script
+  command: '/bin/sh /tmp/get_docker.sh'
+
+- name: install docker
+  pip:
+    name: docker
+    state: present
+    version: '{{ docker_dockerpy_version | default(omit) }}'
+
+
+- name: configure docker daemon.json
+  template:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+    mode: 0400
+    owner: root
+    group: root
+  register: docker_daemon
+
+- service:
+    name: docker
+    enabled: yes
+    state: restarted
+  when: docker_daemon.changed
