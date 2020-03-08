@@ -1,8 +1,0 @@
----
-- name: docker-install
-  hosts: local
-  become: true
-  roles:
-    - { role: docker-ubuntu-1804,                   tags: [ 'docker-ubuntu-1804'       ] }
-
-
