@@ -6,6 +6,9 @@ all:
       hosts:
         127.0.0.1:
           ansible_connection: local
+    gcp:
+      hosts:
+        droneioci.gotdns.ch:
     webservers:
       hosts:
         foo.example.com:
