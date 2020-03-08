@@ -1,0 +1,42 @@
+---
+- name: create drone dirs
+  file:
+    path: "{{ item|safe|trim }}"
+    state: directory
+    owner: "{{ drone_user }}"
+    group: "{{ drone_group }}"
+    mode: 0777
+    recurse: yes
+  changed_when: "False"
+  with_items:
+    - "{{ drone_server_opt_dir }}"
+    - "{{ drone_server_log_dir }}"
+    - "{{ drone_server_config_dir }}"
+    - "{{ drone_server_data_dir }}"
+  tags:
+    - drone
+    - drone-install
+    - drone-cluster
+
+- name: create drone configuration file
+  template:
+     dest: "{{ drone_server_config_dir }}/{{ item | basename }}"
+     owner: "{{ drone_user }}"
+     group: "{{ drone_group }}"
+     mode: 0777
+     src: "{{ item }}"
+  with_items:
+    - drone_server.conf
+  register: config_change
+  tags:
+    - drone
+    - drone-install
+    - drone-cluster
+    - drone-user
+    - drone-config
+    - drone-config-main
+
+- name: restart drone
+  shell: /bin/true
+  notify: restart docker-compose-drone-server
+  when: ( config_change is defined and config_change.changed )
