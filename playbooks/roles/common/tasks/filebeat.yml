@@ -1,0 +1,14 @@
+---
+- name: install debian filebeat
+  apt:
+    deb: "{{ filebeat_deb_url }}"
+  when: is_debian == True
+  tags:
+    - filebeat-pckg
+
+- name: install redhat filebeat
+  yum:
+    name: "{{ filebeat_rpm_url }}"
+  when: is_redhat == True
+  tags:
+    - filebeat-pckg
