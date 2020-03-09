@@ -104,13 +104,13 @@
   tags:
     - monit
 
-- name: transfer monit-config configuration
-  template: src={{ item }} dest=/etc/monit/conf.d/{{ item | basename }} mode=0777
-  with_fileglob:
-    - ../templates/monit/conf.d/*.*
-  tags:
-    - monit
-    - monit-config
+#- name: transfer monit-config configuration
+#  template: src={{ item }} dest=/etc/monit/conf.d/{{ item | basename }} mode=0777
+#  with_fileglob:
+#    - ../templates/monit/conf.d/*.*
+#  tags:
+#    - monit
+#    - monit-config
 
 - name: ensure monit reloaded
   shell: /bin/true
