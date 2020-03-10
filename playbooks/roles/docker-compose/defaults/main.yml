@@ -1,6 +1,0 @@
----
-# version
-# https://pypi.org/project/docker-compose/
-docker_compose_version: "1.25.4"
-# https://pypi.org/project/docker/
-docker_pip_version: "4.2.0"
