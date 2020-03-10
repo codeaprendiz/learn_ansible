@@ -1,5 +1,0 @@
----
-- name: include monit
-  import_tasks: monit.yml
-  tags:
-    - monit-deploy

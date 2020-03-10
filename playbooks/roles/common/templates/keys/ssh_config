@@ -1,8 +1,0 @@
-#{{ ansible_managed }}
-Host *
-  StrictHostKeyChecking no
-
-Host github.com
-  HostName github.com
-  User git
-  IdentitiesOnly yes
