@@ -1,0 +1,21 @@
+---
+- name: setup group
+  group:
+    name: "{{ drone_group }}"
+    system: no
+  tags:
+    - drone
+    - drone-install
+    - drone-cluster
+    - drone-user
+
+- name: setup user
+  user:
+    name: "{{ drone_user }}"
+    system: no
+    group: "{{ drone_group }}"
+  tags:
+    - drone
+    - drone-install
+    - drone-cluster
+    - drone-user

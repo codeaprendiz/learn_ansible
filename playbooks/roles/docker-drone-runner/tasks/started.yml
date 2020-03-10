@@ -1,0 +1,5 @@
+---
+- name: ensure drone-server docker-compose started
+  shell: /bin/true
+  notify:
+    - start docker-compose-drone-runner
