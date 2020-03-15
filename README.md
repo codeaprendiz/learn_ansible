@@ -17,7 +17,7 @@ $ sudo apt -y install ansible
 ```
 
 ## list inventory
-Reference Docs 
+Reference Docs
 https://docs.ansible.com/ansible/latest/user_guide/intro_patterns.html
 
 To convert from *.ini format for *.yml format you can use the following command
