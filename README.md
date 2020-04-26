@@ -1,5 +1,10 @@
 # ansible-kitchen
 
+- To install `ansible` on ubuntu you can run the following
+```bash
+./install.sh
+```
+
 - [task-000-commands](task-000-commands)
 - [playbooks-roles]
     - [commons](playbooks/roles/commons)
