@@ -2,7 +2,7 @@
 
 - To install `ansible` on ubuntu you can run the following
 ```bash
-./install.sh
+./install-ansible.sh
 ```
 
 - [task-000-commands](task-000-commands)
