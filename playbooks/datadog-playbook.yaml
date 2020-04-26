@@ -2,7 +2,7 @@
 #  $ ansible-playbook datadog-playbook.yaml -e "RUNTIME_VAR_DATADOG_API_KEY=2dd894f5******0c73474d48f" -e "RUNTIME_VAR_HOSTS=localhost"
 
 - name: Install Datadog Agent on servers in AWS
-  hosts: {{localhost}}
+  hosts: {{ RUNTIME_VAR_HOSTS }}
   become: yes
   roles:
     - { role: Datadog.datadog, become: yes }
