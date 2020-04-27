@@ -1,5 +1,5 @@
 #Usage:
-#  $ ansible-playbook datadog-playbook.yaml -e "RUNTIME_VAR_DATADOG_API_KEY=2dd894f5******0c73474d48f" -e "RUNTIME_VAR_HOSTS=localhost"
+#  $ ansible-playbook playbook-install-datadog.yaml -e "RUNTIME_VAR_DATADOG_API_KEY=2dd894f5******0c73474d48f" -e "RUNTIME_VAR_HOSTS=localhost"
 
 - name: Install Datadog Agent on servers in AWS
   hosts: "{{ RUNTIME_VAR_HOSTS }}"

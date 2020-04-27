@@ -1,0 +1,9 @@
+---
+- name: docker-install
+  hosts: local
+  become: true
+  roles:
+    - { role: docker,                   tags: [ 'docker'       ] }
+
+
+
