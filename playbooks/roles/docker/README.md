@@ -77,13 +77,13 @@ None.
 
 - Check if playbook exists
 ```bash
-$ cd ../../; ls playbook-install-docker.yaml
-playbook-install-docker.yaml
+$ cd ../../; ls playbook-install-docker_docker-compose.yaml
+playbook-install-docker_docker-compose.yaml
 ```
 
 - Run the playbook
 ```bash
-$ ansible-playbook playbook-install-docker.yaml
+$ ansible-playbook playbook-install-docker_docker-compose.yaml
 ```
 
 
