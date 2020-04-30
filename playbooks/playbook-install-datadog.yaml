@@ -5,7 +5,7 @@
   hosts: "{{ RUNTIME_VAR_HOSTS }}"
   become: yes
   roles:
-    - { role: Datadog.datadog, become: yes }
+    - { role: datadog-agent, become: yes }
   vars:
     datadog_api_key: "{{ RUNTIME_VAR_DATADOG_API_KEY }}"
     datadog_config:
