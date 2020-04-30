@@ -6,7 +6,7 @@
 ```
 
 - [task-000-commands](task-000-commands)
-- [playbooks-roles]
+- playbooks-roles
     - [commons](playbooks/roles/commons)
     - [datadog-agent](playbooks/roles/datadog-agent)
     - [directory](playbooks/roles/directory)
