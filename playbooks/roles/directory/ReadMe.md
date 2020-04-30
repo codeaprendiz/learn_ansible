@@ -8,5 +8,5 @@ playbook-create-directory.yaml
 
 - Run the playbook
 ```bash
-$ ansible-playbook playbook-create-directory.yaml"
+$ ansible-playbook playbook-create-directory.yaml
 ```
