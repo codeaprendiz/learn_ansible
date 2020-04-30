@@ -1,0 +1,8 @@
+- name: create user
+  hosts: local
+  become: true
+  vars:
+    VAR_USER: "test"
+    VAR_GROUP: "test"
+  roles:
+    - { role: docker,                   tags: [ 'docker'       ] }

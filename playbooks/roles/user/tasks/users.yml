@@ -1,0 +1,17 @@
+---
+- name: setup group
+  group:
+    name: "{{ VAR_GROUP }}"
+    system: no
+  tags:
+    - set-group
+    - set-user
+
+- name: setup user
+  user:
+    name: "{{ VAR_USER }}"
+    system: no
+    group: "{{ VAR_GROUP }}"
+  tags:
+    - set-user
+    - set-group
