@@ -8,7 +8,7 @@
 - [task-000-commands](task-000-commands)
 - [playbooks-roles]
     - [commons](playbooks/roles/commons)
-    - [Datadog.datadog](playbooks/roles/Datadog.datadog)
+    - [datadog-agent](playbooks/roles/datadog-agent)
     - [directory](playbooks/roles/directory)
     - [docker](playbooks/roles/docker)
     - [drone-ci](playbooks/roles/drone-ci)
