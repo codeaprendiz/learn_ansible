@@ -5,4 +5,4 @@
     VAR_USER: "test"
     VAR_GROUP: "test"
   roles:
-    - { role: docker,                   tags: [ 'docker'       ] }
+    - { role: user,                   tags: [ 'user'       ] }
