@@ -1,0 +1,16 @@
+---
+VAR_USER: ubuntu
+VAR_GROUP: ubuntu
+
+VAR_MOUNT_PATH: "/data"
+CONTEXT: "{{ VAR_CONTEXT }}"
+VAR_CONTEXT_OPT_DIR: "/opt/{{ CONTEXT }}"
+VAR_CONTEXT_CONFIG_DIR: "{{ VAR_CONTEXT_OPT_DIR }}/config"
+VAR_CONTEXT_LOG_DIR: "{{ VAR_MOUNT_PATH }}/log/{{ CONTEXT }}"
+VAR_CONTEXT_DATA_DIR: "{{ VAR_MOUNT_PATH }}/var/lib/{{ CONTEXT }}"
+
+
+
+
+
+

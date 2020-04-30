@@ -9,8 +9,10 @@
 - [playbooks-roles]
     - [commons](playbooks/roles/commons)
     - [Datadog.datadog](playbooks/roles/Datadog.datadog)
+    - [directory](playbooks/roles/directory)
     - [docker](playbooks/roles/docker)
     - [drone-ci](playbooks/roles/drone-ci)
     - [monit-u1804](playbooks/roles/monit-u1804)
+    - [user-creation](playbooks/roles/user)
 
     

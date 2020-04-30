@@ -1,0 +1,9 @@
+- name: create directory
+  hosts: local
+  become: true
+  vars:
+    VAR_USER: "test"
+    VAR_GROUP: "test"
+    VAR_CONTEXT: "test"
+  roles:
+    - { role: directory,                   tags: [ 'directory'] }

@@ -1,0 +1,19 @@
+---
+- name: create dirs
+  file:
+    path: "{{ item|safe|trim }}"
+    state: directory
+    owner: "{{ VAR_USER }}"
+    group: "{{ VAR_GROUP }}"
+    mode: 0777
+    recurse: yes
+  changed_when: "False"
+  with_items:
+    - "{{ VAR_CONTEXT_OPT_DIR }}"
+    - "{{ VAR_CONTEXT_LOG_DIR }}"
+    - "{{ VAR_CONTEXT_CONFIG_DIR }}"
+    - "{{ VAR_CONTEXT_DATA_DIR }}"
+  tags:
+    - create-dir
+
+
