@@ -7,88 +7,88 @@
     - monit
     - monit-version
 
-- name: set monit version
-  set_fact:
-    mv_rs: "{{ mv_rs_stdout.stdout }}"
-    cacheable: true
-  tags:
-    - monit
-    - monit-version
-
-- name: stop monit
-  service: name=monit state=stopped
-  ignore_errors: true
-  when: monit_version != mv_rs
-
-- name: monit dirs
-  file: path={{ item }} state=directory
-  with_items:
-    - "{{ VAR_DEBIAN_DIR_VAR_MONIT }}"
-    - "{{ VAR_DEBIAN_DIR_VAR_LIB_MONIT }}"
-    - "{{ VAR_DEBIAN_DIR_ETC_MONIT }}"
-  tags:
-    - monit
-
-
-
-- name: download monit
-  get_url:
-    url: https://mmonit.com/monit/dist/binary/{{ monit_version }}/monit-{{ monit_version }}-linux-x64.tar.gz
-    dest: /var/monit
-    mode: 0755
-  when: monit_version != mv_rs
-  tags:
-    - monit
-
-- name: unarchive the downloaded monit
-  unarchive:
-    src: /var/monit/monit-{{ monit_version }}-linux-x64.tar.gz
-    dest: /var/monit
-    copy: no
-  when: monit_version != mv_rs
-  tags:
-    - monit
-
-- name: monit bin
-  command: cp -rfp /var/monit/monit-{{ monit_version }}/bin/monit /usr/bin/
-  when: monit_version != mv_rs
-  tags:
-    - monit
-
-- name: transfer monit config /etc/monit/monitrc
-  template:
-    src: etc/monit/monitrc.conf
-    dest: "{{ VAR_DEBIAN_DIR_ETC_MONIT }}/monitrc"
-    mode: 0700
-  tags:
-    - monit
-
-
-
-- name: transfer monit id /var/lib/monit/id
-  template:
-    src: var/lib/monit/monit.id
-    dest: "{{  VAR_DEBIAN_DIR_VAR_LIB_MONIT }}/id"
-    mode: 0700
-  tags:
-    - monit
-
-- name: transfer monit-config configuration
-  template:
-    src: {{ item }}
-    dest: {{ VAR_DEBIAN_DIR_ETC_MONIT }}/conf.d/{{ item | basename }}
-    mode: 0777
-  with_fileglob:
-    - ../templates/etc/monit/conf.d/*.*
-  tags:
-    - monit
-    - monit-config
-
-- name: ensure monit reloaded
-  shell: /bin/true
-  ignore_errors: true
-  notify:
-    - reload monit
-  tags:
-    - reload-service
-
+#- name: set monit version
+#  set_fact:
+#    mv_rs: "{{ mv_rs_stdout.stdout }}"
+#    cacheable: true
+#  tags:
+#    - monit
+#    - monit-version
+#
+#- name: stop monit
+#  service: name=monit state=stopped
+#  ignore_errors: true
+#  when: monit_version != mv_rs
+#
+#- name: monit dirs
+#  file: path={{ item }} state=directory
+#  with_items:
+#    - "{{ VAR_DEBIAN_DIR_VAR_MONIT }}"
+#    - "{{ VAR_DEBIAN_DIR_VAR_LIB_MONIT }}"
+#    - "{{ VAR_DEBIAN_DIR_ETC_MONIT }}"
+#  tags:
+#    - monit
+#
+#
+#
+#- name: download monit
+#  get_url:
+#    url: https://mmonit.com/monit/dist/binary/{{ monit_version }}/monit-{{ monit_version }}-linux-x64.tar.gz
+#    dest: /var/monit
+#    mode: 0755
+#  when: monit_version != mv_rs
+#  tags:
+#    - monit
+#
+#- name: unarchive the downloaded monit
+#  unarchive:
+#    src: /var/monit/monit-{{ monit_version }}-linux-x64.tar.gz
+#    dest: /var/monit
+#    copy: no
+#  when: monit_version != mv_rs
+#  tags:
+#    - monit
+#
+#- name: monit bin
+#  command: cp -rfp /var/monit/monit-{{ monit_version }}/bin/monit /usr/bin/
+#  when: monit_version != mv_rs
+#  tags:
+#    - monit
+#
+#- name: transfer monit config /etc/monit/monitrc
+#  template:
+#    src: etc/monit/monitrc.conf
+#    dest: "{{ VAR_DEBIAN_DIR_ETC_MONIT }}/monitrc"
+#    mode: 0700
+#  tags:
+#    - monit
+#
+#
+#
+#- name: transfer monit id /var/lib/monit/id
+#  template:
+#    src: var/lib/monit/monit.id
+#    dest: "{{  VAR_DEBIAN_DIR_VAR_LIB_MONIT }}/id"
+#    mode: 0700
+#  tags:
+#    - monit
+#
+#- name: transfer monit-config configuration
+#  template:
+#    src: {{ item }}
+#    dest: {{ VAR_DEBIAN_DIR_ETC_MONIT }}/conf.d/{{ item | basename }}
+#    mode: 0777
+#  with_fileglob:
+#    - ../templates/etc/monit/conf.d/*.*
+#  tags:
+#    - monit
+#    - monit-config
+#
+#- name: ensure monit reloaded
+#  shell: /bin/true
+#  ignore_errors: true
+#  notify:
+#    - reload monit
+#  tags:
+#    - reload-service
+#
