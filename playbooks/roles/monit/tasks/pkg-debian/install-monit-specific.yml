@@ -29,26 +29,26 @@
   tags:
     - monit
 
-#
-#
-#- name: download monit
-#  get_url:
-#    url: https://mmonit.com/monit/dist/binary/{{ monit_version }}/monit-{{ monit_version }}-linux-x64.tar.gz
-#    dest: /var/monit
-#    mode: 0755
-#  when: monit_version != mv_rs
-#  tags:
-#    - monit
-#
-#- name: unarchive the downloaded monit
-#  unarchive:
-#    src: /var/monit/monit-{{ monit_version }}-linux-x64.tar.gz
-#    dest: /var/monit
-#    copy: no
-#  when: monit_version != mv_rs
-#  tags:
-#    - monit
-#
+
+
+- name: download monit
+  get_url:
+    url: https://mmonit.com/monit/dist/binary/{{ monit_version }}/monit-{{ monit_version }}-linux-x64.tar.gz
+    dest: /var/monit
+    mode: 0755
+  when: monit_version != mv_rs
+  tags:
+    - monit
+
+- name: unarchive the downloaded monit
+  unarchive:
+    src: /var/monit/monit-{{ monit_version }}-linux-x64.tar.gz
+    dest: /var/monit
+    copy: no
+  when: monit_version != mv_rs
+  tags:
+    - monit
+
 #- name: monit bin
 #  command: cp -rfp /var/monit/monit-{{ monit_version }}/bin/monit /usr/bin/
 #  when: monit_version != mv_rs
