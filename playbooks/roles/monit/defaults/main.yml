@@ -1,4 +1,7 @@
 ---
+VAR_IS_REDHAT: "False"
+VAR_IS_DEBIAN: "False"
+
 VAR_REDHAT_CONFIG_DIR: "/etc/monit/conf.d/"
 VAR_REDHAT_LIB_DIR: "/var/lib/monit/"
 
