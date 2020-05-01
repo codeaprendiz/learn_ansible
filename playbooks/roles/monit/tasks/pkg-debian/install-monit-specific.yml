@@ -43,52 +43,52 @@
 - name: unarchive the downloaded monit
   unarchive:
     src: /var/monit/monit-{{ VAR_MONIT_VERSION }}-linux-x64.tar.gz
-    dest: /var/monit
+    dest: {{ VAR_DEBIAN_DIR_VAR_MONIT }}
     copy: no
   when: VAR_MONIT_VERSION != mv_rs
   tags:
     - monit
 
-#- name: monit bin
-#  command: cp -rfp /var/monit/monit-{{ VAR_MONIT_VERSION }}/bin/monit /usr/bin/
-#  when: VAR_MONIT_VERSION != mv_rs
-#  tags:
-#    - monit
-#
-#- name: transfer monit config /etc/monit/monitrc
-#  template:
-#    src: etc/monit/monitrc.conf
-#    dest: "{{ VAR_DEBIAN_DIR_ETC_MONIT }}/monitrc"
-#    mode: 0700
-#  tags:
-#    - monit
-#
-#
-#
-#- name: transfer monit id /var/lib/monit/id
-#  template:
-#    src: var/lib/monit/monit.id
-#    dest: "{{  VAR_DEBIAN_DIR_VAR_LIB_MONIT }}/id"
-#    mode: 0700
-#  tags:
-#    - monit
-#
-#- name: transfer monit-config configuration
-#  template:
-#    src: {{ item }}
-#    dest: {{ VAR_DEBIAN_DIR_ETC_MONIT }}/conf.d/{{ item | basename }}
-#    mode: 0777
-#  with_fileglob:
-#    - ../templates/etc/monit/conf.d/*.*
-#  tags:
-#    - monit
-#    - monit-config
-#
-#- name: ensure monit reloaded
-#  shell: /bin/true
-#  ignore_errors: true
-#  notify:
-#    - reload monit
-#  tags:
-#    - reload-service
-#
+- name: monit bin
+  command: cp -rfp {{ VAR_DEBIAN_DIR_VAR_MONIT }}/monit-{{ VAR_MONIT_VERSION }}/bin/monit /usr/bin/
+  when: VAR_MONIT_VERSION != mv_rs
+  tags:
+    - monit
+
+- name: transfer monit config /etc/monit/monitrc
+  template:
+    src: monit/monitrc.conf
+    dest: "{{ VAR_DEBIAN_DIR_ETC_MONIT }}/monitrc"
+    mode: 0700
+  tags:
+    - monit
+
+
+
+- name: transfer monit id /var/lib/monit/id
+  template:
+    src: monit/monit.id
+    dest: "{{  VAR_DEBIAN_DIR_VAR_LIB_MONIT }}/id"
+    mode: 0700
+  tags:
+    - monit
+
+- name: transfer monit-config configuration
+  template:
+    src: {{ item }}
+    dest: {{ VAR_DEBIAN_DIR_ETC_MONIT }}/conf.d/{{ item | basename }}
+    mode: 0777
+  with_fileglob:
+    - ../templates/monit/conf.d/*.*
+  tags:
+    - monit
+    - monit-config
+
+- name: ensure monit reloaded
+  shell: /bin/true
+  ignore_errors: true
+  notify:
+    - reload monit
+  tags:
+    - reload-service
+
