@@ -33,7 +33,7 @@
 
 - name: download monit
   get_url:
-    url: https://mmonit.com/monit/dist/binary/{{ monit_version }}/monit-{{ monit_version }}-linux-x64.tar.gz
+    url: https://mmonit.com/monit/dist/binary/{{ VAR_MONIT_VERSION }}/monit-{{ VAR_MONIT_VERSION }}-linux-x64.tar.gz
     dest: /var/monit
     mode: 0755
   when: VAR_MONIT_VERSION != mv_rs
