@@ -4,4 +4,9 @@ VAR_REDHAT_LIB_DIR: "/var/lib/monit/"
 
 
 VAR_MONIT_VERSION: "5.26.0"
-monit_version: "5.26.0"
+VAR_INSTALL_SPECIFIC_VERSION: "False"
+
+
+VAR_DEBIAN_DIR_VAR_MONIT: "/var/monit/"
+VAR_DEBIAN_DIR_VAR_LIB_MONIT: "/var/lib/monit/"
+VAR_DEBIAN_DIR_ETC_MONIT: "/etc/monit/"

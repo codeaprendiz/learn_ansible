@@ -6,13 +6,11 @@
     baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
   environment:
     RUNLEVEL: 1
-  when: is_redhat == True
   tags:
     - monit
 
 - name: ensure monit installed for Radhat OS
   yum: name={{ packages }} state=present
-  when: is_redhat == True
   vars:
     packages:
       - monit

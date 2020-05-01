@@ -10,3 +10,6 @@
     - monit
 
 
+- name: install specific version of monit
+  include_tasks: pkg-debian/install-monit.yml
+  when: VAR_INSTALL_SPECIFIC_VERSION == "True"
