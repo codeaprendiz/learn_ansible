@@ -75,7 +75,7 @@
 
 - name: transfer monit-config configuration
   template:
-    src: {{ item }}
+    src: "{{ item }}"
     dest: "{{ VAR_DEBIAN_DIR_ETC_MONIT }}/conf.d/{{ item | basename }}"
     mode: 0777
   with_fileglob:
