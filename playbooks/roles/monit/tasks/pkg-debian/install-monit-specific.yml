@@ -7,28 +7,28 @@
     - monit
     - monit-version
 
-#- name: set monit version
-#  set_fact:
-#    mv_rs: "{{ mv_rs_stdout.stdout }}"
-#    cacheable: true
-#  tags:
-#    - monit
-#    - monit-version
-#
-#- name: stop monit
-#  service: name=monit state=stopped
-#  ignore_errors: true
-#  when: monit_version != mv_rs
-#
-#- name: monit dirs
-#  file: path={{ item }} state=directory
-#  with_items:
-#    - "{{ VAR_DEBIAN_DIR_VAR_MONIT }}"
-#    - "{{ VAR_DEBIAN_DIR_VAR_LIB_MONIT }}"
-#    - "{{ VAR_DEBIAN_DIR_ETC_MONIT }}"
-#  tags:
-#    - monit
-#
+- name: set monit version
+  set_fact:
+    mv_rs: "{{ mv_rs_stdout.stdout }}"
+    cacheable: true
+  tags:
+    - monit
+    - monit-version
+
+- name: stop monit
+  service: name=monit state=stopped
+  ignore_errors: true
+  when: monit_version != mv_rs
+
+- name: monit dirs
+  file: path={{ item }} state=directory
+  with_items:
+    - "{{ VAR_DEBIAN_DIR_VAR_MONIT }}"
+    - "{{ VAR_DEBIAN_DIR_VAR_LIB_MONIT }}"
+    - "{{ VAR_DEBIAN_DIR_ETC_MONIT }}"
+  tags:
+    - monit
+
 #
 #
 #- name: download monit
