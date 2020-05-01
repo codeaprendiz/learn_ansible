@@ -13,7 +13,6 @@
     - [docker](playbooks/roles/docker)
     - [drone-ci](playbooks/roles/drone-ci)
     - [monit](playbooks/roles/monit)
-    - [monit-u1804](playbooks/roles/monit-u1804)
     - [user-creation](playbooks/roles/user)
 
     
