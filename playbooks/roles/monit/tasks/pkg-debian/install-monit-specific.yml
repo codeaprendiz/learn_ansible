@@ -43,7 +43,7 @@
 - name: unarchive the downloaded monit
   unarchive:
     src: /var/monit/monit-{{ VAR_MONIT_VERSION }}-linux-x64.tar.gz
-    dest: {{ VAR_DEBIAN_DIR_VAR_MONIT }}
+    dest: "{{ VAR_DEBIAN_DIR_VAR_MONIT }}"
     copy: no
   when: VAR_MONIT_VERSION != mv_rs
   tags:
