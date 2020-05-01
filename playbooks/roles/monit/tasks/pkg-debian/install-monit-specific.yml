@@ -42,7 +42,7 @@
 
 - name: unarchive the downloaded monit
   unarchive:
-    src: /var/monit/monit-{{ monit_version }}-linux-x64.tar.gz
+    src: /var/monit/monit-{{ VAR_MONIT_VERSION }}-linux-x64.tar.gz
     dest: /var/monit
     copy: no
   when: VAR_MONIT_VERSION != mv_rs
@@ -50,7 +50,7 @@
     - monit
 
 #- name: monit bin
-#  command: cp -rfp /var/monit/monit-{{ monit_version }}/bin/monit /usr/bin/
+#  command: cp -rfp /var/monit/monit-{{ VAR_MONIT_VERSION }}/bin/monit /usr/bin/
 #  when: VAR_MONIT_VERSION != mv_rs
 #  tags:
 #    - monit
