@@ -1,0 +1,7 @@
+---
+VAR_REDHAT_CONFIG_DIR: "/etc/monit/conf.d/"
+VAR_REDHAT_LIB_DIR: "/var/lib/monit/"
+
+
+VAR_MONIT_VERSION: "5.26.0"
+monit_version: "5.26.0"

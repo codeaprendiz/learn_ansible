@@ -1,0 +1,7 @@
+- name: install monit
+  hosts: local
+  become: true
+  vars:
+    VAR_MONIT_VERSION: "5.26.0"
+  roles:
+    - { role: monit,                   tags: [ 'monit'       ] }

@@ -1,0 +1,12 @@
+
+- name: ensure monit installed in debian
+  apt: name={{ packages }} state=present
+  vars:
+    packages:
+      - monit
+  environment:
+    RUNLEVEL: 1
+  tags:
+    - monit
+
+
