@@ -1,40 +1,17 @@
-- name: Install aptitude using apt
-  apt:
-    name=aptitude
-    state=latest
-    update_cache=yes
-    force_apt_get=yes
+
+- include_tasks: Debian/setup-Debian.yml
+  when: ansible_os_family == 'Debian'
   tags:
     - all
     - vm-required
 
 
-- name: Install required system packages
-  apt:
-    name={{ item }}
-    state=latest
-    update_cache=yes
-  loop:
-    - apt-transport-https
-    # - jq
-    # - ca-certificates
-    # - curl
-    # - software-properties-common
-    # - python3-pip
-    # - python-pip
-    # - virtualenv
-    # - python3-setuptools
+- include_tasks: Debian/install-atom-ide.yml
   tags:
     - all
-    - vm-required
+    - install-atom
 
-- name: Install required personal packages
-  apt:
-    name={{ item }}
-    state=latest
-    update_cache=yes
-  loop:
-    - atom
+- include_tasks: Debian/setup-my-workstation.yml
   tags:
-    - personal-ubuntu-setup
     - all
+    - setup-my-workstation
