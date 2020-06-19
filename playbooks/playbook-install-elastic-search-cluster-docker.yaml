@@ -12,7 +12,9 @@
     VAR_GROUP: "elasticsearchcluster"
 ####### CREATING REQUIRED DIRECTORIES #####
     VAR_CONTEXT: "elasticsearch-server"
+
   roles:
-    - { role: commons,                  tags: [ 'commons' ]}
-    - { role: user,                   tags: [ 'user'       ] }
-    - { role: directory,                   tags: [ 'directory'] }
+    - { role: commons,                              tags: [ 'commons' ]}
+    - { role: user,                                 tags: [ 'user'       ] }
+    - { role: directory,                            tags: [ 'directory'] }
+    - { role: elastic-search-cluster-docker,        tags: [ 'elastic-search-cluster-docker' ]}

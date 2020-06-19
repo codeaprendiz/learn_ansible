@@ -20,4 +20,13 @@
     - vm-required
 
 
+- name: install pip packages
+  pip: name="{{ item }}" state=latest
+  with_items:
+    - "boto3"
+  tags:
+    - all
+    - vm-required
+
+
 
