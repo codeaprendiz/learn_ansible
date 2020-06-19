@@ -1,15 +1,10 @@
-
 - name: Install required system packages
   apt:
-    name: {{ item }}
-    state: latest
-    update_cache: yes
-    upgrade: yes
-# Remove useless packages from the cache
-    autoclean: yes
-# Remove dependencies that are no longer required
-    autoremove: yes
+    name={{ item }}
+    state=latest
+    update_cache=yes
   loop:
+    - aptitude
     - apt-transport-https
     - jq
     - ca-certificates
@@ -20,7 +15,6 @@
     - virtualenv
     - python3-setuptools
     - vim
-    - aptitude
   tags:
     - all
     - vm-required
