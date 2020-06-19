@@ -1,14 +1,13 @@
 - name: create user
   hosts: local
   become: true
+  vars:
+##### CREATING REQUIRED USERS ##############
+    VAR_USER: "elasticsearchcluster"
+    VAR_GROUP: "elasticsearchcluster"
+####### CREATING REQUIRED DIRECTORIES #####
+    VAR_CONTEXT: "elasticsearch-server"
   roles:
-    - role: commons
-      tags: [ vm-required ]
-    - role: user
-      vars:
-        VAR_USER: "elasticsearchcluster"
-        VAR_GROUP: "elasticsearchcluster"
-    - role: directory
-      vars:
-        VAR_CONTEXT: "elasticsearch-server"
-
+    - { role: common,                  tags: [ 'common' ]}
+#    - { role: user,                   tags: [ 'user'       ] }
+    - { role: directory,                   tags: [ 'directory'] }
