@@ -3,12 +3,12 @@
   become: true
   roles:
     - role: commons
-        tags: [ vm-required ]
+      tags: [ vm-required ]
     - role: user
-        vars:
-          VAR_USER: "elasticsearchcluster"
-          VAR_GROUP: "elasticsearchcluster"
+      vars:
+        VAR_USER: "elasticsearchcluster"
+        VAR_GROUP: "elasticsearchcluster"
     - role: directory
-        vars:
-          VAR_CONTEXT: "elasticsearch-server"
+      vars:
+        VAR_CONTEXT: "elasticsearch-server"
 
