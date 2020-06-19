@@ -1,3 +1,8 @@
+################ SAMPLE USAGE #################################################################################
+#         ansible-playbook playbook-install-elastic-search-cluster-docker.yaml \
+#         --tags="vm-required,set-user,create-dir"
+###############################################################################################################
+
 - name: create user
   hosts: local
   become: true
