@@ -8,5 +8,6 @@
 ####### CREATING REQUIRED DIRECTORIES #####
     VAR_CONTEXT: "elasticsearch-server"
   roles:
-#    - { role: user,                   tags: [ 'user'       ] }
+    - { role: common,                      tags: [ 'vm-required' ]}
+    - { role: user,                        tags: [ 'user'       ] }
     - { role: directory,                   tags: [ 'directory'] }
