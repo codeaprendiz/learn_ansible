@@ -9,5 +9,5 @@
     VAR_CONTEXT: "elasticsearch-server"
   roles:
     - { role: commons,                  tags: [ 'commons' ]}
-#    - { role: user,                   tags: [ 'user'       ] }
+    - { role: user,                   tags: [ 'user'       ] }
     - { role: directory,                   tags: [ 'directory'] }
