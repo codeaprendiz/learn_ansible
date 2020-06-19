@@ -1,0 +1,9 @@
+- name: create user
+  hosts: local
+  become: true
+  vars:
+##### CREATING REQUIRED USERS ##############
+    VAR_USER: "elasticsearchcluster"
+    VAR_GROUP: "elasticsearchcluster"
+  roles:
+    - { role: user,                   tags: [ 'user'       ] }
