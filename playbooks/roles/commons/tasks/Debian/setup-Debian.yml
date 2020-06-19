@@ -1,14 +1,14 @@
 
 - name: Install required system packages
   apt:
-    name={{ item }}
-    state=latest
-    update_cache=yes
-    upgrade= yes
+    name: {{ item }}
+    state: latest
+    update_cache: yes
+    upgrade: yes
 # Remove useless packages from the cache
-    autoclean= yes
+    autoclean: yes
 # Remove dependencies that are no longer required
-    autoremove= yes
+    autoremove: yes
   loop:
     - apt-transport-https
     - jq
