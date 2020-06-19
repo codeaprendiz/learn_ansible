@@ -5,5 +5,8 @@
 ##### CREATING REQUIRED USERS ##############
     VAR_USER: "elasticsearchcluster"
     VAR_GROUP: "elasticsearchcluster"
+####### CREATING REQUIRED DIRECTORIES #####
+    VAR_CONTEXT: "elasticsearch-server"
   roles:
-    - { role: user,                   tags: [ 'user'       ] }
+#    - { role: user,                   tags: [ 'user'       ] }
+    - { role: directory,                   tags: [ 'directory'] }

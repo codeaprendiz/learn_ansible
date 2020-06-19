@@ -13,6 +13,7 @@
     - "{{ VAR_CONTEXT_LOG_DIR }}"
     - "{{ VAR_CONTEXT_CONFIG_DIR }}"
     - "{{ VAR_CONTEXT_DATA_DIR }}"
+    - "{{ VAR_CONTEXT_BACKUP_DIR }}"
   tags:
     - create-dir
 
