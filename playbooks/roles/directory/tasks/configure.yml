@@ -1,7 +1,7 @@
 ---
 - name: get list of directories
   shell: |
-    echo "{{ var_list_dirs }}" |  tr "\n" "\n" > /tmp/dirs.txt
+    echo "{{ var_list_dirs }}" |  tr " " "\n" > /tmp/dirs.txt
   register: list_of_dirs
   tags:
     - create-dir
