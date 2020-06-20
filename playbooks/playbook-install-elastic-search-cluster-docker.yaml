@@ -11,6 +11,12 @@
     var_user: "elasticsearchcluster"
     var_group: "elasticsearchcluster"
 ####### CREATING REQUIRED DIRECTORIES #####
+    var_mount_path: "/data"
+    var_elasticsearch_opt_dir: "/opt/elasticsearch-server"
+    var_elasticsearch_config_dir: "{{ elasticsearch_opt_dir }}/config"
+    var_elasticsearch_log_dir: "{{ mount_path }}/log/elasticsearch-server"
+    var_elasticsearch_data_dir: "{{ mount_path }}/var/lib/elasticsearch-server"
+    var_elasticsearch_backup_dir: "{{ mount_path }}/var/elasticsearch-server-backup"
     var_context: "elasticsearch-server"
 ####### ELASTIC SEARCH VARIABLES ##########
     elastic_search_version: "7.8.0"
