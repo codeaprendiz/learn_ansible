@@ -1,6 +1,7 @@
 ---
 - name: get list of directories
   shell: |
+    rm -rf /tmp/dirs.txt
     echo "{{ var_list_dirs }}" > /tmp/dirs.txt
     cat /tmp/dirs.txt
   tags:
