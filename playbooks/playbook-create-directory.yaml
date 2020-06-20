@@ -21,6 +21,8 @@
     var_list_dirs: "{{ var_context_opt_dir }}
     {{ var_context_config_dir }}
     {{ var_context_log_dir }}
+
+
   {{ var_context_data_dir }}
      {{ var_context_backup_dir }}"
   roles:
