@@ -18,7 +18,11 @@
     var_context_log_dir: "{{ var_mount_path }}/log/{{ context }}"
     var_context_data_dir: "{{ var_mount_path }}/var/lib/{{ context }}"
     var_context_backup_dir: "{{ var_mount_path }}/var/{{ context }}-backup"
-    var_list_dirs: "{{ var_context_opt_dir }} {{ var_context_config_dir }} {{ var_context_log_dir }} {{ var_context_data_dir }} {{ var_context_backup_dir }}"
+    var_list_dirs: "{{ var_context_opt_dir }}
+    {{ var_context_config_dir }}
+    {{ var_context_log_dir }}
+  {{ var_context_data_dir }}
+     {{ var_context_backup_dir }}"
   roles:
     - { role: user,                        tags: [ 'user' ] }
     - { role: directory,                   tags: [ 'directory'] }
