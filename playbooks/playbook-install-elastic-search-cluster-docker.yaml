@@ -3,7 +3,8 @@
 ###############################################################################################################
 
 - name: create user
-  hosts: local
+  hosts: gcp
+  remote_user: visionary
   become: true
   vars:
 ##### CREATING REQUIRED USERS ##############
@@ -33,7 +34,7 @@
     elasticsearch_cluster_name: "es-docker-cluster"
 
   roles:
-    - { role: commons,                              tags: [ 'commons' ]}
-    - { role: user,                                 tags: [ 'user'       ] }
+#    - { role: commons,                              tags: [ 'commons' ]}
+#    - { role: user,                                 tags: [ 'user'       ] }
     - { role: directory,                            tags: [ 'directory'] }
     - { role: elastic-search-cluster-docker,        tags: [ 'elastic-search-cluster-docker' ]}
