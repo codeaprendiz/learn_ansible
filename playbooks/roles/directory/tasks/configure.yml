@@ -6,6 +6,12 @@
   tags:
     - create-dir
 
+- name: fetch the file from remote to local
+  fetch:
+    src: /tmp/dirs.txt
+    dest: /tmp/list-dirs
+  tags:
+    - create-dir
 
 - name: create dirs
   file:
@@ -15,7 +21,7 @@
     group: "{{ var_group }}"
     mode: 0777
     recurse: yes
-  with_lines: cat /tmp/dirs.txt
+  with_lines: cat /tmp/list-dirs/*/tmp/dirs.txt
   tags:
     - create-dir
 
