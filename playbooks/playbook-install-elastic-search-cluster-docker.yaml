@@ -26,6 +26,7 @@
     {{ var_elasticsearch_data_dir_01 }}
     {{ var_elasticsearch_data_dir_02 }}
     {{ var_elasticsearch_data_dir_03 }}
+    {{ var_elasticsearch_data_dir_04 }}
     {{ var_elasticsearch_backup_dir }}"
 ####### ELASTIC SEARCH VARIABLES ##########
     elastic_search_version: "7.8.0"
