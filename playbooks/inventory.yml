@@ -9,6 +9,9 @@ all:
     gcp:
       hosts:
         35.232.170.16:
+    gcp1:
+      hosts:
+        droneio.gotdns.ch:
     webservers:
       hosts:
         foo.example.com:
