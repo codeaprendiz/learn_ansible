@@ -8,10 +8,16 @@
   become: true
   vars:
 ##### CREATING REQUIRED USERS ##############
-    VAR_USER: "elasticsearchcluster"
-    VAR_GROUP: "elasticsearchcluster"
+    var_user: "elasticsearchcluster"
+    var_group: "elasticsearchcluster"
 ####### CREATING REQUIRED DIRECTORIES #####
-    VAR_CONTEXT: "elasticsearch-server"
+    var_context: "elasticsearch-server"
+####### ELASTIC SEARCH VARIABLES ##########
+    elastic_search_version: "7.8.0"
+    env: "dev"
+    elasticsearch_xmx: "512"
+    elasticsearch_node_name: "es01"
+    elasticsearch_cluster_name: "es-docker-cluster"
 
   roles:
     - { role: commons,                              tags: [ 'commons' ]}

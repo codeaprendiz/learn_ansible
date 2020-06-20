@@ -2,8 +2,19 @@
   hosts: local
   become: true
   vars:
-    VAR_USER: "test"
-    VAR_GROUP: "test"
-    VAR_CONTEXT: "test"
+### CREATE USERS
+    var_user: "test"
+    var_group: "test"
+### CREATE DIRECTORIES
+    var_context: "test"
+    var_mount_path: "/data"
+    context: "{{ var_context }}"
+    var_context_opt_dir: "/opt/{{ context }}"
+    var_context_config_dir: "{{ var_context_opt_dir }}/config"
+    var_context_log_dir: "{{ var_mount_path }}/log/{{ context }}"
+    var_context_data_dir: "{{ var_mount_path }}/var/lib/{{ context }}"
+    var_context_backup_dir: "{{ var_mount_path }}/var/{{ context }}-backup"
+    var_list_dirs: "{{ var_context_opt_dir }} {{ var_context_config_dir }} {{ var_context_log_dir }} {{ var_context_data_dir }} {{ var_context_backup_dir }}"
   roles:
+    - { role: user,                        tags: [ 'user' ] }
     - { role: directory,                   tags: [ 'directory'] }

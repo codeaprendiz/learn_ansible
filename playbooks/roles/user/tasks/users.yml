@@ -1,7 +1,7 @@
 ---
 - name: setup group
   group:
-    name: "{{ VAR_GROUP }}"
+    name: "{{ var_group }}"
     system: no
   tags:
     - set-group
@@ -9,9 +9,9 @@
 
 - name: setup user
   user:
-    name: "{{ VAR_USER }}"
+    name: "{{ var_user }}"
     system: no
-    group: "{{ VAR_GROUP }}"
+    group: "{{ var_group }}"
   tags:
     - set-user
     - set-group

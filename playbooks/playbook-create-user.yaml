@@ -2,7 +2,7 @@
   hosts: local
   become: true
   vars:
-    VAR_USER: "test"
-    VAR_GROUP: "test"
+    var_user: "test"
+    var_group: "test"
   roles:
     - { role: user,                   tags: [ 'user'       ] }
