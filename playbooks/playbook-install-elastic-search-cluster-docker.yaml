@@ -1,5 +1,5 @@
 ################ SAMPLE USAGE #################################################################################
-# ansible-playbook playbook-install-elastic-search-cluster-docker.yaml --tags="vm-required,set-user,create-dir"
+# ansible-playbook playbook-install-elastic-search-cluster-docker.yaml --tags="vm-required,set-user,create-dir,elastic-search-cluster"
 ###############################################################################################################
 
 - name: create user
@@ -8,33 +8,35 @@
   become: true
   vars:
 ##### CREATING REQUIRED USERS ##############
-    var_user: "elasticsearchcluster"
-    var_group: "elasticsearchcluster"
+    user: "elasticsearchcluster"
+    group: "elasticsearchcluster"
 ####### CREATING REQUIRED DIRECTORIES #####
-    var_mount_path: "/data"
-    var_elasticsearch_opt_dir: "/opt/elasticsearch-server"
-    var_elasticsearch_config_dir: "{{ var_elasticsearch_opt_dir }}/config"
-    var_elasticsearch_log_dir: "{{ var_mount_path }}/log/elasticsearch-server"
-    var_elasticsearch_data_dir_01: "{{ var_mount_path }}/var/lib/elasticsearch-server_01"
-    var_elasticsearch_data_dir_02: "{{ var_mount_path }}/var/lib/elasticsearch-server_02"
-    var_elasticsearch_data_dir_03: "{{ var_mount_path }}/var/lib/elasticsearch-server_03"
-    var_elasticsearch_backup_dir: "{{ var_mount_path }}/var/elasticsearch-server-backup"
-    var_list_dirs: "{{ var_mount_path }}
-    {{ var_elasticsearch_opt_dir }}
-    {{ var_elasticsearch_config_dir }}
-    {{ var_elasticsearch_log_dir }}
-    {{ var_elasticsearch_data_dir_01 }}
-    {{ var_elasticsearch_data_dir_02 }}
-    {{ var_elasticsearch_data_dir_03 }}
-    {{ var_elasticsearch_backup_dir }}"
+    mount_path: "/data"
+    elastic_search_opt_dir: "/opt/elasticsearch-server"
+    elastic_search_config_dir: "{{ elastic_search_opt_dir }}/config"
+    elastic_search_log_dir: "{{ mount_path }}/log/elasticsearch-server"
+    elastic_search_data_dir_01: "{{ mount_path }}/var/lib/elasticsearch-server-01"
+    elastic_search_data_dir_02: "{{ mount_path }}/var/lib/elasticsearch-server-02"
+    elastic_search_data_dir_03: "{{ mount_path }}/var/lib/elasticsearch-server-03"
+    elastic_search_backup_dir: "{{ mount_path }}/var/elasticsearch-server-backup"
+    var_list_dirs:
+      - "{{ mount_path }}"
+      - "{{ elastic_search_opt_dir }}"
+      - "{{ elastic_search_config_dir }}"
+      - "{{ elastic_search_log_dir }}"
+      - "{{ elastic_search_data_dir_01 }}"
+      - "{{ elastic_search_data_dir_02 }}"
+      - "{{ elastic_search_data_dir_03 }}"
+      - "{{ elastic_search_backup_dir }}"
 ####### ELASTIC SEARCH VARIABLES ##########
     elastic_search_version: "7.8.0"
     env: "dev"
     elasticsearch_xmx: "512"
     elasticsearch_cluster_name: "es-docker-cluster"
+    elasticsearch_port: "9200"
 
   roles:
-#    - { role: commons,                              tags: [ 'commons' ]}
-#    - { role: user,                                 tags: [ 'user'       ] }
+    - { role: commons,                              tags: [ 'commons' ]}
+    - { role: user,                                 tags: [ 'user'       ] }
     - { role: directory,                            tags: [ 'directory'] }
     - { role: elastic-search-cluster-docker,        tags: [ 'elastic-search-cluster-docker' ]}

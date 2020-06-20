@@ -1,27 +1,14 @@
 ---
-## https://stackoverflow.com/questions/1271222/replace-whitespace-with-a-comma-in-a-text-file-in-linux
-- name: get list of directories
-  shell: |
-    echo "{{ var_list_dirs }}" |  tr " " "\n" > /tmp/dirs.txt
-  tags:
-    - create-dir
-
-- name: fetch the file from remote to local
-  fetch:
-    src: /tmp/dirs.txt
-    dest: /tmp/list-dirs
-  tags:
-    - create-dir
 
 - name: create dirs
   file:
     path: "{{ item|safe|trim }}"
     state: directory
-    owner: "{{ var_user }}"
-    group: "{{ var_group }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
     mode: 0777
     recurse: yes
-  with_lines: cat /tmp/list-dirs/*/tmp/dirs.txt
+  with_items: "{{ var_list_dirs }}"
   tags:
     - create-dir
 

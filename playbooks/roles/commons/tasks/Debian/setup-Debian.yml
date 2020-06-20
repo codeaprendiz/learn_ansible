@@ -24,6 +24,8 @@
   pip: name="{{ item }}" state=latest
   loop:
     - "boto3"
+    - "docker"
+    - "docker-compose"
   tags:
     - all
     - vm-required

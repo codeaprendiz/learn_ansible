@@ -1,6 +1,6 @@
 ---
-var_user: ubuntu
-var_group: ubuntu
+user: ubuntu
+group: ubuntu
 
 
 

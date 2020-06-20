@@ -7,7 +7,7 @@ services:
     image: docker.elastic.co/elasticsearch/elasticsearch:{{ elastic_search_version }}
     container_name: es01_{{ env }}
     environment:
-      node.name: "{{ elasticsearch_node_name }}"
+      node.name: "es01"
       cluster.name: "{{ elasticsearch_cluster_name | mandatory }}"
       discovery.seed_hosts: "es02,es03"
       cluster.initial_master_nodes: "es01,es02,es03"
@@ -18,9 +18,9 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - {{ elasticsearch_data_dir_01 }}:/usr/share/elasticsearch/data
-#      - {{ elasticsearch_backup_dir }}:/var/elasticsearch-backup
-#      - {{ elasticsearch_config_dir }}/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - {{ elastic_search_data_dir_01 }}:/usr/share/elasticsearch/data
+#      - {{ elastic_search_backup_dir }}:/var/elasticsearch-backup
+#      - {{ elastic_search_config_dir }}/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ports:
       - {{ elasticsearch_port }}:9200
       - 9200:9200
@@ -41,39 +41,40 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - {{ elasticsearch_data_dir_02 }}:/usr/share/elasticsearch/data
-#      - {{ elasticsearch_backup_dir }}:/var/elasticsearch-backup
-#      - {{ elasticsearch_config_dir }}/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - data02:/usr/share/elasticsearch/data
+      - {{ elastic_search_data_dir_02 }}:/usr/share/elasticsearch/data
+#      - {{ elastic_search_backup_dir }}:/var/elasticsearch-backup
+#      - {{ elastic_search_config_dir }}/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     networks:
       - elastic
   es03:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:{{ elastic_search_version }}
     container_name: es03
     environment:
-      - node.name=es03
-      - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es02
-      - cluster.initial_master_nodes=es01,es02,es03
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      node.name: "es03"
+      cluster.name: "{{ elasticsearch_cluster_name | mandatory }}"
+      discovery.seed_hosts: "es01,es02"
+      cluster.initial_master_nodes: "es01,es02,es03"
+      bootstrap.memory_lock: "true"
+      ES_JAVA_OPTS: '-Xms{{ elasticsearch_xmx }}m -Xmx{{ elasticsearch_xmx }}m'
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
+      - {{ elastic_search_data_dir_03 }}:/usr/share/elasticsearch/data
+#      - {{ elastic_search_backup_dir }}:/var/elasticsearch-backup
+#      - {{ elastic_search_config_dir }}/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - data03:/usr/share/elasticsearch/data
     networks:
       - elastic
 
 volumes:
-  data01:
+  {{ elastic_search_data_dir_01 }}:
     driver: local
-  data02:
+  {{ elastic_search_data_dir_02 }}:
     driver: local
-  data03:
+  {{ elastic_search_data_dir_03 }}:
     driver: local
-
 networks:
   elastic:
     driver: bridge
