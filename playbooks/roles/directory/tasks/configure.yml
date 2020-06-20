@@ -1,4 +1,5 @@
 ---
+## https://stackoverflow.com/questions/1271222/replace-whitespace-with-a-comma-in-a-text-file-in-linux
 - name: get list of directories
   shell: |
     echo "{{ var_list_dirs }}" |  tr " " "\n" > /tmp/dirs.txt

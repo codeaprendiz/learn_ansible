@@ -3,7 +3,7 @@
 ###############################################################################################################
 
 - name: create directory
-  hosts: local
+  hosts: gcp
   become: true
   vars:
 ### CREATE USERS
