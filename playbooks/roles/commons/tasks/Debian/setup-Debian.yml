@@ -22,7 +22,7 @@
 
 - name: install pip packages
   pip: name="{{ item }}" state=latest
-  with_items:
+  loop:
     - "boto3"
   tags:
     - all

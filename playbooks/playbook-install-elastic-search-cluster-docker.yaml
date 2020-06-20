@@ -14,9 +14,9 @@
     var_mount_path: "/data"
     var_elasticsearch_opt_dir: "/opt/elasticsearch-server"
     var_elasticsearch_config_dir: "{{ elasticsearch_opt_dir }}/config"
-    var_elasticsearch_log_dir: "{{ mount_path }}/log/elasticsearch-server"
-    var_elasticsearch_data_dir: "{{ mount_path }}/var/lib/elasticsearch-server"
-    var_elasticsearch_backup_dir: "{{ mount_path }}/var/elasticsearch-server-backup"
+    var_elasticsearch_log_dir: "{{ var_mount_path }}/log/elasticsearch-server"
+    var_elasticsearch_data_dir: "{{ var_mount_path }}/var/lib/elasticsearch-server"
+    var_elasticsearch_backup_dir: "{{ var_mount_path }}/var/elasticsearch-server-backup"
     var_list_dirs: "{{ var_mount_path }} {{ var_elasticsearch_opt_dir }} {{ var_elasticsearch_config_dir }} {{ var_elasticsearch_log_dir }} {{ var_elasticsearch_data_dir }} {{ var_elasticsearch_backup_dir }}"
 ####### ELASTIC SEARCH VARIABLES ##########
     elastic_search_version: "7.8.0"
