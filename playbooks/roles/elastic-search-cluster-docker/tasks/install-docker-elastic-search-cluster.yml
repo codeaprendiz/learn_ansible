@@ -1,0 +1,11 @@
+---
+
+- name: copy elasticsearch docker-compose file
+  template:
+    dest="{{ elasticsearch_opt_dir }}/docker-compose.yml"
+    owner="{{ elasticsearch_user }}"
+    group="{{ elasticsearch_group }}"
+    mode=777
+    src=docker-compose.yml
+  tags:
+    - elastic-search-cluster

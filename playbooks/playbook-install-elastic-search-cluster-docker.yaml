@@ -15,14 +15,22 @@
     var_elasticsearch_opt_dir: "/opt/elasticsearch-server"
     var_elasticsearch_config_dir: "{{ var_elasticsearch_opt_dir }}/config"
     var_elasticsearch_log_dir: "{{ var_mount_path }}/log/elasticsearch-server"
-    var_elasticsearch_data_dir: "{{ var_mount_path }}/var/lib/elasticsearch-server"
+    var_elasticsearch_data_dir_01: "{{ var_mount_path }}/var/lib/elasticsearch-server_01"
+    var_elasticsearch_data_dir_02: "{{ var_mount_path }}/var/lib/elasticsearch-server_02"
+    var_elasticsearch_data_dir_03: "{{ var_mount_path }}/var/lib/elasticsearch-server_03"
     var_elasticsearch_backup_dir: "{{ var_mount_path }}/var/elasticsearch-server-backup"
-    var_list_dirs: "{{ var_mount_path }} {{ var_elasticsearch_opt_dir }} {{ var_elasticsearch_config_dir }} {{ var_elasticsearch_log_dir }} {{ var_elasticsearch_data_dir }} {{ var_elasticsearch_backup_dir }}"
+    var_list_dirs: "{{ var_mount_path }}
+    {{ var_elasticsearch_opt_dir }}
+    {{ var_elasticsearch_config_dir }}
+    {{ var_elasticsearch_log_dir }}
+    {{ var_elasticsearch_data_dir_01 }}
+    {{ var_elasticsearch_data_dir_02 }}
+    {{ var_elasticsearch_data_dir_03 }}
+    {{ var_elasticsearch_backup_dir }}"
 ####### ELASTIC SEARCH VARIABLES ##########
     elastic_search_version: "7.8.0"
     env: "dev"
     elasticsearch_xmx: "512"
-    elasticsearch_node_name: "es01"
     elasticsearch_cluster_name: "es-docker-cluster"
 
   roles:

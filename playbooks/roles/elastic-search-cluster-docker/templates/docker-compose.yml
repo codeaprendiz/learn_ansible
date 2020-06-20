@@ -18,30 +18,32 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - {{ elasticsearch_config_dir }}/elasticsearch.yml:/etc/elasticsearch/config/elasticsearch.yml
-      - {{ elasticsearch_data_dir }}:/usr/share/elasticsearch/data
-      - {{ elasticsearch_backup_dir }}:/var/elasticsearch-backup
-      - data01:/usr/share/elasticsearch/data
+      - {{ elasticsearch_data_dir_01 }}:/usr/share/elasticsearch/data
+#      - {{ elasticsearch_backup_dir }}:/var/elasticsearch-backup
+#      - {{ elasticsearch_config_dir }}/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ports:
       - {{ elasticsearch_port }}:9200
       - 9200:9200
     networks:
       - elastic
   es02:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
-    container_name: es02
+    image: docker.elastic.co/elasticsearch/elasticsearch:{{ elastic_search_version }}
+    container_name: es02_{{ env }}
     environment:
-      - node.name=es02
-      - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es03
-      - cluster.initial_master_nodes=es01,es02,es03
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      node.name: "es02"
+      cluster.name: "{{ elasticsearch_cluster_name | mandatory }}"
+      discovery.seed_hosts: "es01,es03"
+      cluster.initial_master_nodes: "es01,es02,es03"
+      bootstrap.memory_lock: "true"
+      ES_JAVA_OPTS: '-Xms{{ elasticsearch_xmx }}m -Xmx{{ elasticsearch_xmx }}m'
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
+      - {{ elasticsearch_data_dir_02 }}:/usr/share/elasticsearch/data
+#      - {{ elasticsearch_backup_dir }}:/var/elasticsearch-backup
+#      - {{ elasticsearch_config_dir }}/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - data02:/usr/share/elasticsearch/data
     networks:
       - elastic
