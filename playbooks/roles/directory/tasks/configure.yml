@@ -4,6 +4,8 @@
     echo "{{ var_list_dirs }}" |  tr " " "\n" > /tmp/dirs.txt
     cat /tmp/dirs.txt
   register: list_of_dirs
+  tags:
+    - create-dir
 
 
 - name: create dirs
