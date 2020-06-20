@@ -1,3 +1,7 @@
+################ SAMPLE USAGE #################################################################################
+#         ansible-playbook playbook-create-directory.yaml --tags="set-user,create-dir"
+###############################################################################################################
+
 - name: create directory
   hosts: local
   become: true

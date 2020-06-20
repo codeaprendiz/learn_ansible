@@ -10,3 +10,8 @@ playbook-create-directory.yaml
 ```bash
 $ ansible-playbook playbook-create-directory.yaml
 ```
+
+- Run the playbook with required tags
+```bash
+$ ansible-playbook playbook-create-directory.yaml --tags="set-user,create-dir"
+```
