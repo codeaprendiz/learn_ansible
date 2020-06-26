@@ -1,5 +1,5 @@
 ################ SAMPLE USAGE #################################################################################
-# ansible-playbook playbook-install-elastic-search-cluster-docker.yaml --tags="vm-required,set-user,create-dir,elastic-search-cluster"
+# ansible-playbook playbook-install-elastic-search-cluster-docker.yaml --tags="vm-required,docker,set-user,create-dir,elastic-search-cluster"
 ###############################################################################################################
 
 - name: create user
@@ -37,6 +37,7 @@
 
   roles:
     - { role: commons,                              tags: [ 'commons' ]}
+    - { role: docker,                              tags: [ 'docker' ]}
     - { role: user,                                 tags: [ 'user'       ] }
     - { role: directory,                            tags: [ 'directory'] }
     - { role: elastic-search-cluster-docker,        tags: [ 'elastic-search-cluster-docker' ]}
