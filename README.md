@@ -12,6 +12,7 @@
     - [directory](playbooks/roles/directory)
     - [docker](playbooks/roles/docker)
     - [drone-ci](playbooks/roles/drone-ci)
+    - [elastic-search-cluster-docker](playbooks/roles/elastic-search-cluster-docker)
     - [monit](playbooks/roles/monit)
     - [user-creation](playbooks/roles/user)
     
