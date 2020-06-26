@@ -8,7 +8,7 @@ all:
           ansible_connection: local
     gcp:
       hosts:
-        35.225.130.171:
+        34.69.97.106:
     gcp1:
       hosts:
         droneio.gotdns.ch:
