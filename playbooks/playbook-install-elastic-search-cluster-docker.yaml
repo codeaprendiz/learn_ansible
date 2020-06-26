@@ -2,7 +2,7 @@
 # ansible-playbook playbook-install-elastic-search-cluster-docker.yaml --tags="vm-required,docker,set-user,create-dir,elastic-search-cluster"
 ###############################################################################################################
 
-- name: create user
+- name: install docker-elastic-search-cluster
   hosts: gcp
   remote_user: visionary
   become: true
