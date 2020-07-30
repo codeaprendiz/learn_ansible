@@ -34,3 +34,16 @@ ip         heap.percent ram.percent cpu load_1m load_5m load_15m node.role maste
 172.18.0.4           60          96   7    0.56    0.39     0.49 dilmrt    -      es02
 172.18.0.2           50          96   7    0.56    0.39     0.49 dilmrt    *      es01
 ```
+
+- Open the port 9200 in GCP (or any other cloud) where the elastic search is running
+```bash
+$ curl -X GET "35.226.68.74:9200/_cat/nodes?v&pretty"
+ip         heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name
+172.18.0.4           26          97   1    0.00    0.00     0.00 dilmrt    *      es03
+172.18.0.2           69          97   1    0.00    0.00     0.00 dilmrt    -      es02
+172.18.0.3           13          97   1    0.00    0.00     0.00 dilmrt    -      es01
+```
+
+- Open the port 5601 in GCP (or any other cloud) where the kibana is running
+
+- Now access the kibana dashboard on the console. In my case it was at [http://23.236.48.129:5601/app/kibana](http://23.236.48.129:5601/app/kibana) :)

@@ -4,7 +4,7 @@
 
 - name: install docker-elastic-search-cluster
   hosts: gcp2
-  remote_user: visionary
+  remote_user: codeaprendiz
   become: true
   vars:
 ##### CREATING REQUIRED USERS ##############
