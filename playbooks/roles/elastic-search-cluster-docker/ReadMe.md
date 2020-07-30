@@ -44,6 +44,3 @@ ip         heap.percent ram.percent cpu load_1m load_5m load_15m node.role maste
 172.18.0.3           13          97   1    0.00    0.00     0.00 dilmrt    -      es01
 ```
 
-- Open the port 5601 in GCP (or any other cloud) where the kibana is running
-
-- Now access the kibana dashboard on the console. In my case it was at [http://23.236.48.129:5601/app/kibana](http://23.236.48.129:5601/app/kibana) :)
