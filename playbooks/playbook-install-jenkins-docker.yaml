@@ -16,11 +16,14 @@
     jenkins_log_dir: "{{ mount_path }}/var/log/jenkins"
     jenkins_opt_dir: "{{ mount_path }}/opt/jenkins"
     jenkins_config_dir: "{{ mount_path }}/opt/jenkins/config"
+    jenkins_data_dir: "{{ mount_path }}/lib/jenkins"
     var_list_dirs:
       - "{{ mount_path }}"
       - "{{ jenkins_log_dir }}"
       - "{{ jenkins_opt_dir }}"
       - "{{ jenkins_config_dir }}"
+      - "{{ jenkins_tmp_dir }}"
+      - "{{ jenkins_data_dir }}"
 
 ####### jenkins VARIABLES ##########
     env: "dev"

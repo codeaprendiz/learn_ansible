@@ -5,13 +5,6 @@ jenkins_proxy_server_name: jenkins.acme.com
 jenkins_proxy_port: 8443
 
 
-# jenkins settings
-mount_path: /data
-jenkins_opt_dir: "/opt/jenkins"
-jenkins_config_dir: "{{ jenkins_opt_dir }}/config"
-jenkins_tmp_dir: "{{ mount_path }}/tmp/jenkins"
-jenkins_data_dir: "{{ mount_path }}/lib/jenkins"
-
 jenkins_xmx: "{{ ( ansible_memtotal_mb * 0.20 ) | round(0, 'ceil') | int }}"
 jenkins_xms: "{{ ( ansible_memtotal_mb * 0.20 ) | round(0, 'ceil') | int }}"
 jenkins_user: jenkins

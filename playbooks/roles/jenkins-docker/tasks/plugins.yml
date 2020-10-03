@@ -55,8 +55,7 @@
     mode: 0644
     validate_certs: no
   loop: "{{ lookup('file', 'roles/jenkins-docker/templates/plugins.txt').splitlines() }}"
-  notify: restart jenkins
+  notify: restart docker-compose-jenkins
   tags:
     - jenkins
     - jenkins-setup-plugins
-    - test
