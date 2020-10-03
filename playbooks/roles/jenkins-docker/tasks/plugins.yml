@@ -54,6 +54,9 @@
     group: jenkins
     mode: 0644
     validate_certs: no
+  register: result
+#  changed_when:
+#    - '"changed:" in result.stdout'
   loop: "{{ lookup('file', 'roles/jenkins-docker/templates/plugins.txt').splitlines() }}"
   notify: restart docker-compose-jenkins
   tags:
