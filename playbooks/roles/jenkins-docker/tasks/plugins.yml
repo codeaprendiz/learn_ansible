@@ -50,8 +50,8 @@
   get_url:
     dest: "{{ jenkins_data_dir }}/plugins/{{ item | mandatory }}.jpi"
     url: "https://updates.jenkins-ci.org/latest/{{ item }}.hpi"
-    owner: jenkins
-    group: jenkins
+    owner: "{{ user }}"
+    group: "{{ group }}"
     mode: 0644
     validate_certs: no
   register: result

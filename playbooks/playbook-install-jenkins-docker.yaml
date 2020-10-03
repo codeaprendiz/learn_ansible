@@ -3,15 +3,18 @@
 ###############################################################################################################
 
 - name: install docker jenkins
-  hosts: gcp2
-  remote_user: codeaprendiz
+  hosts: localhost
+#  remote_user: codeaprendiz
   become: true
   vars:
 ##### CREATING REQUIRED USERS ##############
-    user: "jenkins"
-    group: "jenkins"
+#    user: "jenkins"
+#    group: "jenkins"
+    user: "ankitsinghrathi"
+    group: "staff"
 ####### CREATING REQUIRED DIRECTORIES #####
-    mount_path: "/data"
+#    mount_path: "/data"
+    mount_path: "/tmp"
     jenkins_tmp_dir: "{{ mount_path }}/tmp/jenkins"
     jenkins_log_dir: "{{ mount_path }}/var/log/jenkins"
     jenkins_opt_dir: "{{ mount_path }}/opt/jenkins"
