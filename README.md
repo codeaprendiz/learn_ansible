@@ -13,6 +13,7 @@
     - [docker](playbooks/roles/docker)
     - [drone-ci](playbooks/roles/drone-ci)
     - [elastic-search-cluster-docker](playbooks/roles/elastic-search-cluster-docker)
+    - [jenkins-docker](playbooks/roles/jenkins-docker)
     - [kibana-docker](playbooks/roles/kibana-docker)
     - [monit](playbooks/roles/monit)
     - [user-creation](playbooks/roles/user)
